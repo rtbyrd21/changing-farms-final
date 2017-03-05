@@ -1,0 +1,98 @@
+
+<!-- <button ng-click='toggleModal()'>Open Modal Dialog</button> -->
+
+
+<div id="tile-container">
+
+<div id="counter" ng-if="itemCount >= 0">
+<p>You have found</p>
+<span class="incriment-counter" inc-counter="itemCount">{{itemCount}}</span> / 
+<span class="context-counter">{{totalItems}}</span></div>
+
+<div id="next" ng-if="firstSlide" next-button><img src="images/next.png"></div>
+
+<div id="compareText" ng-if="!firstSlide && textDisplay > 0">
+	<h3><b>Compare the photos.</b></h3>
+	<p><b>What has changed?</b></p>
+</div>
+
+<div id="item-selected" ng-if="selectedText">
+	<div ng-bind-html='toTrustedHTML( selectedTextTitle | formatText )'></div>
+	<div ng-class="{'long': (selectedText.length > 20), 'verylong': (selectedText.length > 350)}"
+
+    ng-bind-html='toTrustedHTML( selectedText )'></div>
+</div>
+
+<div id="sketch-holder"></div>
+	  <div class="tile" id="{{n}}" full-screen image="{{n}}" ng-repeat="n in [1,2,3,4] track by $index" back-img="images/farm_0{{n}}.jpg"></div>
+</div>
+
+<modal-dialog show='modalShown' width='42.5%'>
+  <div ng-if="textDisplay == 0">
+  <h3>How to Play</h3>
+  <p>The Hartzold Family has lived on this McLean County farm for five generations, from approximately 1874 to the present. The farmstead has seen many changes over the years. In this activity you will see two aerial images side by side from two different time periods. </br></br><span class="compare-text"><b>Compare the photos, and tap on the buildings and areas that look different to learn more.</span></b></p>
+  </div>
+
+
+  <div ng-if="textDisplay == 1">
+
+  <p>In the 1940s Ed Hartzold grew corn, soybeans, hay, and oats. He hired someone to shell his corn, and then trucked it to the nearby Dry Grove elevator where it was stored until it was needed. Hartzold hired a thresherman to separate his oats until 1941, when he and a brother-in-law shared the purchase of a small grain combine.</p>
+  <p><b>Click below to compare what changed on the Hartzold farmstead between 1943 and 1968!</b></p>
+  </div>
+
+
+  <div ng-if="textDisplay == 2">
+  <p>As you can tell, the 1940s and 50s were a time of great expansion for the Hartzold farmstead.</p>
+  <p>In 1957 Ed Hartzold and his wife moved out of the family farmhouse to make way for his son, Bob (who was now in charge of the farm) and his new wife Marian. Bob and Marian raised two sons and six daughters there.</p>
+  <p>In addition to the 240-acre family farm, Bob rented another 340 acres of farmland. On his land he grew a rotation of corn, soybeans, hay, oats, and occasionally wheat. By this time the farm was completely mechanized. The barn no longer housed horses, but the loft was still filled with hay for the cattle.</p>
+<p><b>Click below to discover what changed on the farm between 1968 and 1975!</b></p>
+  </div>
+
+
+  <div ng-if="textDisplay == 3">
+ 
+  <p>Due to changes in the market, by 1975 Bob had dramatically reduced the cattle on his farm and had expanded his hog operation. Because Bob had fewer cattle, he no longer filled his vertical and bunker silos with silage. The barn was modified to accommodate farrowing hogs. Without cattle on the farm, Bob reduced production of oats and hay and increased production of corn and soybeans.</p>
+  <p><b>Click below to compare what changed on the farm between 1975 and 2016!</b></p>
+  </div>
+
+
+
+   <div ng-if="textDisplay == 4">
+   <div ng-if="compareCounter == 0">
+
+    <p>In 1982 Bob and his oldest son Joe, who farmed with him, decided to get out of the livestock business. They sold all of their livestock equipment, including the portable A-frame hog houses and feeders. After that, the only crops they grew were corn and soybeans. Additionally the milk house was torn down to make room for a new garage, and the original machine shop (used for 30 years as a garage) was torn down. Trees now obscure the view of that part of the property.</p>
+    <p><b>What do you think the Hartzold farmstead will look like 20 years from now?</b></p>
+  </div>
+	  <div ng-if="compareCounter == 1">
+     <h3>Congratulations</h3>
+     <p>Final Summary.</p> 
+    </div>
+  </div>
+
+
+
+  <div class='ng-modal-close' ng-click='hideModal()' ng-if="textDisplay == 0">BEGIN</div>
+  <!-- <div class='ng-modal-close' ng-click='compareScreen()' ng-if="textDisplay == 1">next</div> -->
+  <div class='ng-modal-close' ng-click='compareScreen()' ng-if="textDisplay == 1"> CONTINUE</div>
+  <div class='ng-modal-close' ng-click='swapScreen(1965)' ng-if="textDisplay == 2">CONTINUE</div>
+  <div class='ng-modal-close' ng-click='swapScreen(1975)' ng-if="textDisplay == 3">CONTINUE</div>
+  <div class='ng-modal-close' ng-click='playAgain()' ng-if="textDisplay == 4 && compareCounter == 0">Exit</div>
+  <div class='ng-modal-close' ng-click='playAgain()' ng-if="textDisplay == 4 && compareCounter == 1">Exit</div>
+</modal-dialog>
+
+
+
+<modal-dialog-intro show='introModalShown' width='42.5%'>
+<div>
+  
+    <p><b>First, explore the 1943 farmstead by touching the buildings to see what they were used for. The counter in the corner will let you know how you are doing.</b></p>
+  </div>
+  <div class='ng-modal-close' ng-click='hideIntroModal()'>GOT IT</div>
+</modal-dialog-intro>
+
+
+<!-- <div class="grid-container">
+	<ul class="tile-container">
+	  <li ui-sref="aerial({aerialID: n})" class="tile" image="{{n}}" ng-repeat="n in [1,2,3,4,5] track by $index">{{n}}</li>
+	</ul>
+</div> -->

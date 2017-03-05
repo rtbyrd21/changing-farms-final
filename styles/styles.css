@@ -1,0 +1,320 @@
+body{
+	padding: 0;
+	margin: 0;
+  overflow: hidden;
+  background: url("../images/farm_background.jpg") no-repeat center center fixed;
+}
+
+*{
+  -webkit-user-select: none; 
+  cursor: none;
+}
+
+@font-face {
+  font-family: 'POOR';
+  src: url('../images/POORICH.TTF'); 
+}
+
+@font-face {
+  font-family: 'HELV';
+  src: url('../images/helvetica.ttf'); 
+}
+
+@font-face {
+  font-family: 'CORB';
+  src: url('../images/corbel.ttf'); 
+}
+
+.col{
+  /*background: url("../images/farm_background.jpg") no-repeat center center fixed;*/
+}
+
+.flex-grid {
+  display: flex;
+  height: 100vh;
+  width:100vw;
+  background-color: white;
+}
+.flex-grid .col {
+  flex: 1;
+  width: 50vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.Aligner-item {
+  max-width: 50%;
+}
+
+
+.tile-container {
+  display: flex;
+  height: 100vh;
+  width:100vw;
+}
+
+.tile{
+  display: inline-block;
+  width: 50%;
+  height: 50vh;
+/*  margin-left: 2.5%;
+  margin-right: 2.5%;
+  margin-top: 2.5vh;
+  margin-bottom: 2.5vh;*/
+	background-color: grey;
+  color:white;
+  transition: all 0.5s ease;
+}
+
+/*.tile:nth-child(odd) {
+  margin-right: 1.75%;
+  margin-left: .5%;
+
+}
+
+.tile:nth-child(1) {
+  margin-bottom: 2.5vh;
+  margin-top: 2.5vh;
+}
+.tile:nth-child(2) {
+  margin-bottom: 2.5vh;
+  margin-top: 2.5vh;
+}
+
+.tile:nth-child(3) {
+  margin-top: 2.5vh;
+  margin-bottom: 2.5vh;
+}
+.tile:nth-child(4) {
+  margin-top: 2.5vh;
+  margin-bottom: 2.5vh;
+}
+
+
+.tile:nth-child(even) {
+  margin-left: 3.75%;
+    margin-top: 5.5vh;
+}*/
+
+#sketch-holder{
+  position: absolute;
+}
+
+
+
+.ng-modal-overlay {
+  /* A dark translucent div that covers the whole screen */
+  position:absolute;
+  z-index:9999;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-color:#000000;
+  opacity: 0.0;
+}
+.ng-modal-dialog {
+  /* A centered div above the overlay with a box shadow. */
+  z-index:10000;
+  position: absolute;
+  width: 50%; /* Default */
+
+  /* Center the dialog */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+
+  background-color: #a3c9ed;
+  box-shadow: 4px 4px 80px #000;
+  font-family: "CORB";
+
+  /*border-radius: 5px; */
+}
+
+.ng-modal-dialog-content {
+  /*padding:20px;*/
+  text-align: center;
+  font-size: 20px;
+  font-family: 'CORB', 'arial', 'sans-serif';
+  padding:20px;
+}
+
+.ng-modal-dialog-content h3{
+  font-size: 3em;
+  margin: 0em 1em;
+  font-weight: 100;
+  font-family: 'CORB', 'arial', 'sans-serif';
+
+  }
+
+.ng-modal-close {
+  /*position: absolute;*/
+  /*bottom: 0px;*/
+  text-align: center;
+  background-color: white;
+  width: 100%;
+  color: black;
+  /*padding: 5px;*/
+  padding: 1% 0%;
+  cursor: pointer;
+  font-size: 120%;
+  display: inline-block;
+  font-weight: bold;
+  font-family: 'arial', 'sans-serif';
+  /*border-radius: 0px 0px 5px 5px; */
+}
+
+#counter{
+    position: absolute;
+    bottom: 40px;
+    font-size:5em;
+    left: 150px;
+    z-index: 9;
+    color: white;
+    padding: 10px;
+    font-family: 'HELV', 'arial', 'sans-serif';
+    color:white !important;
+    text-shadow:
+       3px 3px 0 #000,
+     -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+}
+
+#counter p{
+    position: absolute;
+    width: 200px;
+    font-size: 28px;
+    top: -80px;
+    left: -75px;
+    text-shadow: 1px 1px 0 #000, 
+                -1px -1px 0 #000, 
+                1px -1px 0 #000, 
+                -1px 1px 0 #000, 
+                1px 1px 0 #000;
+}
+
+.incriment-counter{
+  position: absolute;
+  top: -20px;
+  left: -15px;
+  text-align: right;
+  color:white;
+  text-shadow:
+       3px 3px 0 #000,
+     -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+}
+.context-counter{
+  position: absolute;
+  left: 35px;
+  top: 25px;
+  color:white;
+  text-shadow:
+       3px 3px 0 #000,
+     -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+}
+
+#next{
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  z-index: 999;
+  background-image: url("../images/next.png");
+  /*background-color: red;*/
+  height: 100px;
+  width: 100px;
+}
+
+#next img{
+  max-width:100%;
+max-height:100%;
+}
+
+#compareText{
+  position: absolute;
+  top: 52%;
+  left: 5%;
+  font-family: 'CORB', 'arial', 'sans-serif';
+  text-align: center;
+}
+#compareText h3{
+  font-size: 4em;
+  margin-bottom: 0;
+  font-weight: 100;
+  color: white;
+   text-shadow:
+       3px 3px 0 #000,
+     -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+}
+#compareText p{
+  font-size: 4em;
+  color: white;
+  margin-top: 0px;
+   text-shadow:
+       3px 3px 0 #000,
+     -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+}
+
+
+.small-date{
+  padding-left: 1em;
+  padding-top: 1em;
+  font-size: 20px;
+  margin:0px;
+}
+
+#item-selected{
+    background-color: rgba(255,255,255,.75);
+    width: 51%;
+    min-height: 17.5vh;
+    position: absolute;
+    top: 2%;
+    right: 1%;
+    z-index: 999;
+    box-shadow: 0px 0px 3px black;
+    padding: 15px;
+    font-family: "CORB";
+    font-size: 20px;
+}
+
+#item-selected h3{
+  margin-top: .25em;
+}
+
+#item-selected p.verylong{
+  font-size: .9em;
+}
+
+canvas{
+-webkit-box-shadow: 0px 0px 22px 3px rgba(0,0,0,0.85);
+-moz-box-shadow: 0px 0px 22px 3px rgba(0,0,0,0.85);
+box-shadow: 0px 0px 22px 3px rgba(0,0,0,0.85);
+}
+
+.tile{
+  box-shadow: 0px 0px 22px 3px rgba(0,0,0,0.85);
+  margin-top: -3px;
+}
+
+.compare-text{
+    font-size: 1.5em;
+}
+
